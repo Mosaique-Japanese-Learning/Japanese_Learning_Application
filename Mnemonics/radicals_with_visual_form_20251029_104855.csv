@@ -1,0 +1,324 @@
+﻿Radical ID#,Stroke#,Radical,Meaning,Reading-J,Reading-R,R-Filename,Anim-Filename,Position-J,Position-R,Visual_Form
+1,1.0,⼀,"one, horizontal stroke",いち,ichi,,,,,Horizontal line.
+2,1.0,⼁,vertical stroke,たてぼう,tatebou,,,,,竖笔直立
+3,1.0,⼂,dot,てん,ten,,,,,"Dot shape, often small and simple."
+4,1.0,⼃,diagonal sweeping stroke,の,no,,,,,A diagonal line that sweeps across.
+5,1.0,,diagonal sweeping stroke,のかんむり,nokanmuri,,,かんむり,kanmuri,Sweeping diagonal line forming a square outline.
+6,1.0,⼄,the second ,おつ,otsu,otsu-nine,otsu,,,Square shape with two lines crossing in middle.
+7,1.0,⺃,the second,おつ,otsu,,,,,Three vertical bars arranged in a triangle shape.
+8,1.0,⼅,vertical stroke with a hook,はねぼう,hanebou,,,,,Hooked vertical stroke resembling a vertical line with an upward curve.
+9,2.0,⼆,two,に,ni,,,,,Two vertical bars intersecting horizontally.
+10,2.0,⼇,"lid, top",なべぶた,nabebuta,,,かんむり,kanmuri,"lid shape, resembles a small mouth opening"
+11,2.0,⼈,person,ひと,hito,,,,,A human figure divided into body and head sections.
+12,2.0,⺅,person ,にんべん,ninben,,,へん,hen,A person's head viewed from above.
+13,2.0,𠆢,person ,ひとやね,hitoyane,,,かんむり,kanmuri,Human: Stick figure silhouette of a person.
+14,2.0,⼉,human legs,ひとあし,hitoashi,,,あし,ashi,脚 (kata) → two joined lines for feet
+15,2.0,⼊,to enter,いる,iru,,,,,⼊ (hole in a wall)
+16,2.0,⼋,eight,はち,hachi,,,,,Eight grid lines crossing at right angles.
+17,2.0,,eight,はちがしら,hachigashira,,,,,Eight lines meeting at a point.
+18,2.0,⼌ ,to enclose,けいがまえ,keigamae,,,"かまえ, けいがまえ","kamae, keigamae",A single vertical line enclosing others.
+19,2.0,⼍,"cover, crown",わかんむり,wakanmuri,,,かんむり,kanmuri,Covering or crowning something; a loop with overlapping lines.
+20,2.0,⼎,ice,にすい,nisui,,,へん,hen,Ice crystal forming a flat plate.
+21,2.0,⼏,table,きにょう,kinyou,,,つくり,tsukuri,⼏个⻩⾊⼩⽊块并排成⾏
+22,2.0,⺇,wind,かぜかんむり,kazekanmuri,,,かんむり,kanmuri,Blade with curved edges
+23,2.0,⼐,"container, open box",かんにょう,kannyou,,,にょう,nyou,Box shape with a hole for entry.
+24,2.0,⼑,"knife, sword",かたな,katana,,,,,Sword blade divided into two parts
+25,2.0,⺉,"knife, sword",りっとう,rittou,,,つくり,tsukuri,⻩色長形，刀刃或劍刃的象徵。
+26,2.0,⼒,power,ちから,chikara,,,,,Powerful and strong. Arms extending upward and gripping tightly.
+27,2.0,⼓,to wrap,つつみがまえ,tsutsumigamae,,,"かまえ, つつみがまえ","kamae, tsutsumigamae",Wrapping material looped and tied together.
+28,2.0,⼔,spoon,さじ,saji,,,つくり,tsukuri,A curved utensil with a long stem and thin handle.
+29,2.0,⼕,box,はこがまえ,hakogamae,,,"かまえ, はこがまえ","kamae, hakogamae","Box shape, four corners."
+30,2.0,⼖,"to conceal, hide",かくしがまえ,kakushigamae,,,"かまえ, はこがまえ","kamae, hakogamae","Hidden shape of the body, symbolizing hiding or concealing."
+31,2.0,⼗,ten,じゅう,juu,,,,,Ten fingers or counterclockwise strokes.
+32,2.0,⼘,oracle,ぼく,boku,,,,,"Triangle shape, top point higher than base."
+33,2.0,⼙,"stamp, seal",ふしづくり,fushizukuri,,,つくり,tsukuri,"Stamp has a square shape with one corner missing, resembling an inked impression."
+34,2.0,⼚,cliff,がんだれ,gandare,,,たれ,tare,A vertical rock face cut by wind and rain.
+35,2.0,⼛,"private, Katakana Mu",む,mu,,,,,⼿ (hand) → pointing fingers
+36,2.0,⼜,"again, right hand",また,mata,,,,,Crossstroke repeated horizontally
+37,3.0,⼝,mouth,くち,kuchi,,,,,竖心旁，呈开放的圆形，代表嘴部结构。
+38,3.0,,mouth,くちへん,kuchihen,,,へん,hen,Mouth shape: circular opening.
+39,3.0,⼞,"border, territorial boundaries",くにがまえ,kunigamae,,,"かまえ, くにがまえ","kamae, kunigamae",A line intersecting multiple boxes forming a grid-like outline.
+40,3.0,⼟,earth,つち,tsuchi,,,,,土 (dohi): flat rectangle symbolizing soil and earth.
+41,3.0,,earth,つちへん,tsuchihen,,,へん,hen,"Circle shape, often with a dot in the middle."
+42,3.0,⼠,"man, scholar, samurai",さむらい,samurai,,,,,Man with a long beard and wearing armor.
+43,3.0,,"man, scholar, samurai",さむらいかんむり,samuraikanmuri,,samurai,かんむり,kanmuri,"Man standing upright, head tilted slightly forward, with long hair flowing."
+44,3.0,⼡,to follow,のまた,nomata,,,,,A single vertical line pointing downward.
+45,3.0,⼢,to go slowly,なつあし,natsuashi,,,あし,ashi,Curved line representing gradual motion.
+46,3.0,⼣,evening,ゆうべ,yuube,,,,,Evening light gradually fading into darkness.
+47,3.0,⼤,"large, big",だい,dai,,,,,"Big, elongated shape representing quantity."
+48,3.0,⼥,woman,おんな,onna,,,,,Woman's silhouette: shoulders and waist.
+49,3.0,,woman,おんなへん,onnahen,,,へん,hen,Woman's face with eyes and mouth open wide.
+50,3.0,⼦,"child, son",こ,ko,,,,,⼦ (child): hand holding a baby.
+51,3.0,,"child, son",こへん,kohen,,,へん,hen,"The radical  resembles a child's hand reaching up, symbolizing growth and new beginnings."
+52,3.0,⼧,"roof, house",うかんむり,ukanmuri,,,かんむり,kanmuri,⻩色方框，带有四条竖线。
+53,3.0,⼨,"inch, (2.25 cm)",すん,sun,,,,,⻩色细条，表示长度单位。
+54,3.0,,"inch, (2.25 cm)",すんづくり,sunzukuri,,sun,つくり,tsukuri,A small horizontal bar representing a thin finger used to measure length.
+55,3.0,⼩,small,しょう,shou,,,,,⼩ (small) → shape resembling a person with arms and legs shortened.
+56,3.0,⺌,small,しょうかんむり,shoukanmuri,,,かんむり,kanmuri,Small square within a larger square.
+57,3.0,⺐,lame leg,だいのまげあし,dainomageashi,,,つくり,tsukuri,Lame foot sticking straight up
+58,3.0,⼫,"corpse, awning",しかばね,shikabane,,,たれ,tare,Awning: triangular shape with a single vertical line under it.
+59,3.0,⼬,sprout,くさのめ,kusanome,,,,,芽 (bud) unfolding from stem
+60,3.0,⼭,mountain,やま,yama,,,,,Three peaks forming a mountain.
+61,3.0,,mountain,やまへん,yamahen,,,へん,hen,Mountain peak with several ridges.
+62,3.0,,mountain,やまかんむり,yamakanmuri,,,かんむり,kanmuri,Three peaks forming a mountain shape.
+63,3.0,⼮,winding river,まがりがわ,magarigawa,,,,,Winding stream of water.
+64,3.0,川,river,さんぼんがわ,sanbongawa,,,,,"Flowing water, winding through valleys."
+65,3.0,⼯,"work, carpenter, skill",たくみ,takumi,,,,,"⼯ looks like a person with tools and a pencil, symbolizing manual work skills."
+66,3.0,,"work, carpenter, skill",たくみへん,takumihen,,,へん,hen,The stylized hook with a dot in the middle. A symbol of craftsmanship and skill.
+67,3.0,⼰,self,おのれ,onore,,,,,A person's head or body.
+68,3.0,⼱,cloth,はば,haba,,,,,布条斜挂，图案多为网格。
+69,3.0,,cloth,はばへん,habahen,,,へん,hen,A single line representing fabric in vertical folds.
+70,3.0,⼲,"to dry, shield",かん,kan,,,,,A horizontal line inside a square.
+71,3.0,⺓,"young, slight",いとがしら,itogashira,,,,,Dot-like shape in the lower-left corner. Represents youthfulness and slightness.
+72,3.0,⼴,slanting roof,まだれ,madare,,,たれ,tare,Slanted line extending upwards.
+73,3.0,⼵,"to move, stretch",えんにょう,ennyou,,,にょう,nyou,"A stylized figure resembling a person's hand moving forward, suggesting movement."
+74,3.0,⼶,folded hands,にじゅうあし,nijuuashi,,,あし,ashi,Folds in a single hand shape.
+75,3.0,⼷,javelin,いぐるみ,igurumi,,,,,"A long, pointed spear."
+76,3.0,⼸,bow （in archery）,ゆみ,yumi,,,,,A bow with a thin handle and arrow in it.
+77,3.0,,bow （in archery）,ゆみへん,yumihen,,,へん,hen,An arrow pointing forward with bent shaft.
+78,3.0,⼹,pig’s head,けいがしら,keigashira,,,,,Pig's head: Sharp point with long snout.
+79,3.0,⺕,pig’s head,けいがしら,keigashira,,,,,猪的头部形状。
+80,3.0,⺔,pig’s head,けいがしら,keigashira,,,,,Pig's face with prominent nose and large mouth.
+81,3.0,⼺,"hair-style, light rays",さんづくり,sanzukuri,,,つくり,tsukuri,Light rays converging into a single strand.
+82,3.0,⼻,"step, stride, street, to go",ぎょうにんべん,gyouninben,,,へん,hen,Stilettos with heel pointed upward
+83,3.0,⺾,grass,くさかんむり,kusakanmuri,,,かんむり,kanmuri,⽪片，草茎露出地面
+84,3.0,⻌,"road, walk, to advance",しんにょう,shinnyou,,,にょう,nyou,"Road, steps leading forward, a journey ahead."
+85,3.0,⻏,"village, country, city",おおざと,oozato,,,つくり,tsukuri,Crossroads and homes arranged in rows.
+86,3.0,⻖,"hill, mound",こざとへん,kozatohen,,,へん,hen,"Mound-like shape, rising and connecting to sky."
+87,3.0,⺍,Katakana Tsu,つ,tsu,,,かんむり,kanmuri,氵 + 竹 radical.
+88,3.0,⺖,"heart, mind, spirit",りっしんべん,risshinben,,,へん,hen,⼼ (心): rounded shape with two inward-pointing lines.
+89,3.0,⺘,hand,てへん,tehen,,,へん,hen,掌形手，握物之用。
+90,3.0,⺡,water,さんずい,sanzui,,,へん,hen,氵 (stream of water)
+91,3.0,⺨,beast,けものへん,kemonohen,,,へん,hen,Tail of a dragon with eyes.
+92,4.0,⼼,"heart, mind, spirit",こころ,kokoro,,,,,"心 (heart, mind, spirit) → swirling vortex of emotions and thoughts"
+93,4.0,⺗,"heart, mind, spirit",したごころ,shitagokoro,,,あし,ashi,Heart-shaped symbol.
+94,4.0,⼽,"spear, weapon",ほこ,hoko,,,,,Trunk with a spear point and curved blade.
+95,4.0,⼾,door,と,to,,,,,Door handle protruding from frame
+96,4.0,,door,とだれ,todare,,,たれ,tare,Door handle facing outward.
+97,4.0,⼿,hand,て,te,,,,,手掌弯曲，手指向内聚拢
+98,4.0,⽀,branch,しにょう,shinyou,,,,,Trunk and two spread-out branches.
+99,4.0,⽁,"activity, to strike, hit",ぼくづくり,bokuzukuri,,,つくり,tsukuri,Trunk with curved edges intersecting.
+100,4.0,⺙,"activity, to strike, hit",ぼくづくり,bokuzukuri,,,つくり,tsukuri,Strike symbol: thin vertical line with a dot at top
+101,4.0,⽂,"literature, letters",ぶん,bun,,,,,"文字 (literature, letters) → written characters"
+102,4.0,⽃,"big dipper, ladle, 18 liters",ますづくり,masuzukuri,,,つくり,tsukuri,"Big spoon in shape, with four prongs pointing downward"
+103,4.0,⽄,axe,おのづくり,onozukuri,,,つくり,tsukuri,A chopping tool with a handle and head.
+104,4.0,⽅,"direction, flag",ほう,hou,,,,,"A square divided by two diagonals, representing direction or flag."
+105,4.0,,"direction, flag",ほうへん,houhen,,,へん,hen,Triangle pointing upwards.
+106,4.0,⽆,not,むにょう,munyou,,,,,Cross-shaped outline without any lines or components.
+107,4.0,⽇,"sun, day, time",ひ,hi,,,,,圆形太阳符号，代表时间与日出。
+108,4.0,,"sun, day, time",ひへん,hihen,,,へん,hen,"Sun's disk, light rising in the sky"
+109,4.0,⽈,to say,ひらび,hirabi,,,,,"Pointed stick used to form words like ""say""."
+110,4.0,⽉,"moon, month, period",つき,tsuki,,,,,圆形，有缺角的轮状。
+111,4.0,⺝,"moon, month, period",つきへん,tsukihen,,tsuki,へん,hen,⽉轮形，平放呈半月ظ。
+112,4.0,,"meat, flesh",にくづき,nikuzuki,,,,,Meat slices arranged neatly.
+113,4.0,⽊,"tree, wood",き,ki,,,,,Trunk with spreading branches
+114,4.0,,"tree, wood",きへん,kihen,,,へん,hen,Trunk and leaves symbolizing a tree.
+115,4.0,⽋,"to lack, yawn",あくび,akubi,,,,,"mouth open slightly, with tongue visible."
+116,4.0,⽌,to stop,とめる,tomeru,,,,,Stop sign or clamp - a straight line crossing two oblique lines.
+117,4.0,⽍,"death & dying, to decompose",がつ,gatsu,,,,,骨 (bones) → fragmented skeletal remains
+118,4.0,,"death & dying, to decompose",がつへん,gatsuhen,,,へん,hen,Tranquil void with jagged edges.
+119,4.0,⽎,"lance shaft, action",るまた,rumata,,,つくり,tsukuri,⻩色长条，象征直立的⼈力武器。
+120,4.0,⽏,"not, mother",なかれ,nakare,,,,,斜杠 (slanted line with two horizontal lines above and below)
+121,4.0,⽐,to compare,くらべる,kuraberu,,,,,Two parallel lines intersecting.
+122,4.0,⽑,hair,け,ke,,,,,梳理，细长的线条卷曲。
+123,4.0,⽒,"family, clan",うじ,uji,,,,,Triangle with horizontal lines connecting sides
+124,4.0,⽓,"steam, air",きがまえ,kigamae,,,"かまえ, きがまえ","kamae, kigamae",Flaming arrows of invisible air.
+125,4.0,⽔,water,みず,mizu,,,,,波浪流动，水流不断。
+126,4.0,⽕,fire,ひ,hi,hi-fire,,,,Flames rising upward.
+127,4.0,,fire,ひへん,hihen,hihen-fire,,へん,hen,Flame rising upward
+128,4.0,⺣,fire,れっか,rekka,,,あし,ashi,Trunk of a tree with flames rising.
+129,4.0,⽖,"claw, nail",つめ,tsume,,,,,"Claw shape, single vertical line pointing right."
+130,4.0,⺤,"claw, nail",つめかんむり,tsumekanmuri,,,かんむり,kanmuri,"Claw shape, sharp point facing upward."
+131,4.0,爫,"claw, nail",つめかんむり,tsumekanmuri,,,かんむり,kanmuri,"Claw shape, sharp and pointing downward."
+132,4.0,⽗,father,ちち,chichi,,,,,"A stick with two lines crossing, representing a person."
+133,4.0,⽘,to mix,こう,kou,,,,,A small dot inside a square shape.
+134,4.0,⽙,split wood,しょうへん,shouhen,,,へん,hen,Split stick into two parts.
+135,4.0,⽚,split wood,かた,kata,,,,,Splitting bamboo stick with a sharp tool.
+136,4.0,,split wood,かたへん,katahen,,,へん,hen,Split piece of wood into two halves.
+137,4.0,,"fang, canine tooth",きば,kiba,,,,,Fang shape resembles a canine tooth.
+138,4.0,⽜,cow,うし,ushi,,,,,A curved back and four legs.
+139,4.0,,cow,うしへん,ushihen,,,へん,hen,"A cow's head features a curved horn, suggesting strength and power."
+140,4.0,⽝,dog,いぬ,inu,,,,,Four legs and a tail.
+141,4.0,,"jewelry, jeweled king",おうへん,ouhen,,,へん,hen,Jeweled King: Three horizontal lines in a triangle shape.
+142,4.0,⺭,"altar, festival, religious service",しめすへん,shimesuhen,,,へん,hen,"Triangle on top, square base, altar-like shape."
+143,4.0,㓁,net,あみがしら,amigashira,,,,,A net consists of a square with diagonal lines connecting opposite corners.
+144,4.0,⺹,"old, old-age",おいかんむり,oikanmuri,,,かんむり,kanmuri,Old age symbol: a single vertical line with two dots on top.
+145,5.0,⽞,darkness,げん,gen,,,,,Darkness appearing as a long vertical line.
+146,5.0,⽟,jewelry,たま,tama,,,,,耳形图案，连接宝石与手镯。
+147,5.0,,melon,うり,uri,,,,,A melon's curved shape.
+148,5.0,⽡,tile,かわら,kawara,,,,,Tile divided into rectangular sections
+149,5.0,⽢,sweet,あまい,amai,,,,,舌形，舌尖向上翘。
+150,5.0,⽣,"birth, to be born, live",うまれる,umareru,,,,,"Three people standing in a row, with arms stretched outwards."
+151,5.0,⽤,to use,もちいる,mochiiru,,,,,"The radical for ""⽤"" looks like a pair of hands with fingers spread wide. It connects to its meaning as representing action and practicality."
+152,5.0,⽥,rice paddy,た,ta,,,,,稲 (rice) → field of planted rice paddies
+153,5.0,,rice paddy,たへん,tahen,,,へん,hen,A rice paddy filled with growing stalks
+154,5.0,⽦,bolt of cloth,ひき,hiki,,,,,Bolt of cloth forms a vertical rectangle with diagonal stripes.
+155,5.0,⺪,bolt of cloth,ひきへん,hikihen,,,へん,hen,Bolt of fabric with diagonal lines separating sections.
+156,5.0,⽧,sickness,やまいだれ,yamaidare,,,たれ,tare,Sickly appearance: patient lying on a bed with bandages and illness symbols.
+157,5.0,⽨,"outspread legs, departure",はつがしら,hatsugashira,,,かんむり,kanmuri,Outstretched lower limbs descending.
+158,5.0,⽩,white,しろ,shiro,,,,,"White color, often seen as a single horizontal line."
+159,5.0,,white,はくへん,hakuhen,,,へん,hen,White dot on top.
+160,5.0,⽪,"skin, hide",けがわ,kegawa,,,,,Skin appears as a curved line enclosing a circular shape.
+161,5.0,⽫,"plate, bowl",さら,sara,,,,,A plate with a rim and flat bottom.
+162,5.0,⽬,eye,め,me,,,,,A black dot at the center with a curved line extending outward.
+163,5.0,,eye,めへん,mehen,,,へん,hen,"A small, circular shape resembling a human eye."
+164,5.0,,eye,よこめ,yokome,,,かんむり,kanmuri,"Eye shape, two lines resembling eyelids."
+165,5.0,⽭,halberd,ほこ,hoko,,,,,Long spear-like weapon with a curved handle.
+166,5.0,,halberd,ほこへん,hokohen,,,へん,hen,A long pole topped by a curved blade.
+167,5.0,⽮,arrow,や,ya,,,,,A vertical line pointing to the left.
+168,5.0,,arrow,やへん,yahen,,,へん,hen,Arrow head pointing upwards.
+169,5.0,⽯,stone,いし,ishi,,,,,⽯ → rough shape with rounded edges
+170,5.0,,stone,いしへん,ishihen,,,へん,hen,"A stone lying horizontally, simple and unyielding."
+171,5.0,⽰,"altar, festival, religious service",しめす,shimesu,,,,,A triangular structure on top of a square base.
+172,5.0,⽱,footprint,じゅうのあし,juunoashi,,,,,Foot print as a square enclosing an inward-pointing捺 (捺 is a dot-like stroke).
+173,5.0,⽲,grain,のぎへん,nogihen,,,へん,hen,穂 (grain) → full ear of grain
+174,5.0,⽳,"hole, cave",あな,ana,,,,,Cave entrance or aperture.
+175,5.0,,"hole, cave",あなかんむり,anakanmuri,,,かんむり,kanmuri,A small circular shape inside a square outline.
+176,5.0,⽴,to stand,たつ,tatsu,,,,,A person standing upright.
+177,5.0,,to stand,たつへん,tatsuhen,,,へん,hen,"A figure standing upright, base facing forward."
+178,5.0,,"fang, canine tooth",きば,kiba,,,,,Canine tooth appears as a vertical line with a small curve at the bottom.
+179,5.0,,"fang, canine tooth",きばへん,kibahen,,,へん,hen,A sharp point pointing downwards.
+180,5.0,氺,water,したみず,shitamizu,,,,,Rivers flowing downward
+181,5.0,⺫,net,あみがしら,amigashira,,,かんむり,kanmuri,Net frame shape
+182,5.0,𦉰 ,net,あみがしら,amigashira,,,,,A net has a cross with four vertical lines.
+183,5.0,⻂,clothing,ころもへん,koromohen,,,へん,hen,Thin clothing or a light coat.
+184,5.0,⺛,not,むにょう,munyou,,,,,捺 (dot) → straight line or vertical stroke
+185,6.0,⽵,bamboo,たけ,take,,,,,竹の節々 | Nodes of bamboo.
+186,6.0,⺮,bamboo,たけかんむり,takekanmuri,,,かんむり,kanmuri,Bent stem with leaves
+187,6.0,⽶,rice,こめ,kome,,,,,稲穫からくるもの。丰收の兆し。
+188,6.0,,rice,こめへん,komehen,,,へん,hen,The radical  looks like a single grain of rice. It visually connects to its meaning by representing the essence of grains and food consumption.
+189,6.0,⽷,thread,いと,ito,,,,,"A thin, sinewy line connecting two parts."
+190,6.0,,thread,いとへん,itohen,,,へん,hen,A thin line extending horizontally.
+191,6.0,⽸,earthen jar,みずがめ,mizugame,,,,,Earthen jar shape: simple and solid appearance.
+192,6.0,⽹,net,あみめ,amime,,,,,Net-like structure: interconnected loops and curves.
+193,6.0,⽺,sheep,ひつじ,hitsuji,,,,,蹄子形状，双足站立
+194,6.0,⺷,sheep,ひつじ,hitsuji,,,,,Sheep's head with legs and tail.
+195,6.0,羽,"feather, wing",はね,hane,,,,,Feathery outline resembling a small bird's head.
+196,6.0,⽻,"feather, wing",はね,hane,,,,,"A feather or wing shape, often curved and thin."
+197,6.0,⽼,"old, old-age",おいかんむり,oikanmuri,,,,,"老 → white hair and beard, often with wrinkles."
+198,6.0,⽽,and also,しこうして,shikoushite,,,,,而: 斜线左右两边交叉。
+199,6.0,⽾,plow,らいすき,raisuki,,,へん,hen,A curved line connected to a square.
+200,6.0,⽿,ear,みみ,mimi,,,,,A curved line on top of a block shape.
+201,6.0,,ear,みみへん,mimihen,,,へん,hen,"Horns pointing inward, symbol of a dog's ear."
+202,6.0,⾀,writing brush,ふでづくり,fudezukuri,,,,,A long thin object used for writing.
+203,6.0,⾁,"flesh, meat",にく,niku,,,,,⻩⾊的三角形块状，代表着人体内脂肪组织。
+204,6.0,⾂,"retainer, minister",しん,shin,,,,,"⻉ (retainer, minister) → sash wrapped around a person"
+205,6.0,⾃,self,みずから,mizukara,,,,,⼈形 → simple silhouette of a person
+206,6.0,⾄,"to arrive, reach",いたる,itaru,,,,,Tail end of a road sign pointing towards.
+207,6.0,,"to arrive, reach",いたるへん,itaruhen,,,へん,hen,A stylized arrow pointing forward with a small dot inside.
+208,6.0,⾅,"mortar, quern",うす,usu,,,,,⻩色方块，中间有细条。
+209,6.0,⾆,tongue,した,shita,,,,,⻩色形状，细长弯曲，连接说话器官。
+210,6.0,⾇,"contrary, to err",まいあし,maiashi,,,,,Flipped dot and radical shape with a diagonal line.
+211,6.0,⾈,"ship, boat",ふね,fune,,,,,船形，上下两层船舱。
+212,6.0,,"ship, boat",ふねへん,funehen,,,へん,hen,"船形の島 | ""Island shaped like a boat"""
+213,6.0,⾉,boundary,こん,kon,,,,,斜线形，连接上下或左右部分。
+214,6.0,⾊,color,いろ,iro,,,,,"A circle divided into sections representing primary colors: red, green, blue."
+215,6.0,⾋,"grass, plant",くさ,kusa,,,,,"Long, thin radical resembling a stalk of grass."
+216,6.0,⾌,tiger,とらがしら,toragashira,,,かんむり,kanmuri,虎 (Tiger) → four powerful claws and a fierce face
+217,6.0,⾍,"worm, insect, bug",むし,mushi,,,,,蜿蜒细长的虫体，四肢弯曲，形状似线段。
+218,6.0,,"worm, insect, bug",むしへん,mushihen,,,へん,hen,A curled snake body.
+219,6.0,⾎,blood,ち,chi,,,,,滴状液体流动，象征生命和活力。
+220,6.0,⾏,to go,ぎょうがまえ,gyougamae,,,"かまえ, ぎょうがまえ","kamae, gyougamae",Walking path with people and buildings nearby.
+221,6.0,⾐,clothing,ころも,koromo,,,,,衣 (fukinuki): collar with loops and ties.
+222,6.0,⾑,"cover, west",にし,nishi,,,,,"⻄ (square outline) + 木 (tree trunk)
+A small square outlining a tree trunk."
+223,6.0,⻃,"cover, west",にし,nishi,,,,,Covering with a flat top facing west
+224,6.0,⽠,melon,うり,uri,,,,,Square shape with a cross in the center
+225,7.0,⾒,to see,みる,miru,,,,,Eye outline with a small dot in the center.
+226,7.0,⾓,"horn, corner",つの,tsuno,,,,,⻩色物体，尖锐的顶部。
+227,7.0,,"horn, corner",つのへん,tsunohen,,,へん,hen,A curved line resembling a horn's shape.
+228,7.0,⾔,"words, to speak, say",げん,gen,gen-word,,,,⼝ (mouth) with two vertical strokes for teeth
+229,7.0,,"words, to speak, say",ごんべん,gonben,,,へん,hen,Four dots stacked vertically forming a line.
+230,7.0,⾕,valley,たに,tani,,,,,Valley → sloping bottom with two opposite sides.
+231,7.0,,valley,たにへん,tanihen,,,へん,hen,Valley: curved line leading inward to a central point
+232,7.0,⾖,bean,まめ,mame,,,,,"Bean shape, curved and rounded."
+233,7.0,,bean,まめへん,mamehen,,,へん,hen,"Bean shape, rounded and symmetrical"
+234,7.0,⾗,pig,いのこ,inoko,,,,,⻩色横带中间穿⾏着一个圆形头。
+235,7.0,⾘,badger,むじなへん,mujinahen,,,へん,hen,Badger: sharp claws and long snout.
+236,7.0,⾙,"shell, property, wealth",かい,kai,,,,,"Shell shape, often indicating protection or enclosure."
+237,7.0,,"shell, property, wealth",かいへん,kaihen,,,へん,hen,"Shell shape with curved sides, often associated with wealth and valuables."
+238,7.0,⾚,red,あか,aka,,,,,Red triangle on top of a vertical line.
+239,7.0,⾛,to run,はしる,hashiru,,,,,脚 (lower part of shoe) pointing forward with a running person on top.
+240,7.0,,to run,そうにょう,sounyou,,,にょう,nyou,A running line in a box
+241,7.0,⾜,"foot, leg",あし,ashi,,,,,⻩色的半圆，代表腿脚，有时延伸到膝部。
+242,7.0,⻊,"foot, leg",あしへん,ashihen,,,へん,hen,Foot or leg shape
+243,7.0,⾝,body,み,mi,,,,,"The radical 範 represents a body silhouette, with arms raised and a head."
+244,7.0,,body,みへん,mihen,,,へん,hen,"A human body lying down, arms and legs extended."
+245,7.0,⾞,"vehicle, wheel, car",くるま,kuruma,,,,,"Wheel shape with spokes, often represented in vehicles and wheels."
+246,7.0,,"vehicle, wheel, car",くるまへん,kurumahen,,,へん,hen,Wheel shape: circular with spokes. Represents a vehicle's motion and direction.
+247,7.0,⾟,bitter,からい,karai,,,,,点状形状，象征苦涩味
+248,7.0,⾠,"Fifth zodiac sign, 7–9 A.M.",しんのたつ,shinnotatsu,,,,,⻛扇叶片展开，象征轻风拂面
+249,7.0,⾡,"to advance, move ahead",しんにょう,shinnyou,,,,,⻋辙，向前推进的痕迹。
+250,7.0,⾢,community,むら,mura,,,,,A community is a group of people living together.
+251,7.0,⾣,"sake jar, bird",ひよみのとり,hiyominotori,,torihen,,,"Bird shape, top half showing mouth and bill."
+252,7.0,,"sake jar, bird",とりへん,torihen,,,へん,hen,Bird perched on top of a sake bottle.
+253,7.0,⾤,to separate,のごめ,nogome,,,,,"Dividing line, shape like a slash."
+254,7.0,,to separate,のごめへん,nogomehen,,,へん,hen,"A slash line, dividing or separating things."
+255,7.0,⾥,"village, (3.93 km)",さと,sato,,,,,Town hall with houses and streets visible.
+256,7.0,,"village, (3.93 km)",さとへん,satohen,,,へん,hen,"Small, rectangular village with clustered houses, small bridges, and winding streets."
+257,7.0,⾂,"retainer, minister",しん,shin,,,,,⼈（⼈）→ standing person with hands at sides
+258,7.0,,"contrary, to err",まいあし,maiashi,,,,,Contrary mark: a line through the center of a square.
+259,7.0,⻨,wheat,むぎ,mugi,,,,,Flax stalk with seeds visible.
+260,8.0,⾦,"metal, gold, mineral",かね,kane,,,,,"⾦ (gold, metal, mineral) → shiny yellow object with distinctive cross-hatched pattern"
+261,8.0,,"metal, gold, mineral",かねへん,kanehen,,,へん,hen,Metal spike or arrowhead shape
+262,8.0,⻑,long,ながい,nagai,,,,,⻓条形，给人一种延伸的感觉。
+263,8.0,⾨,"gate, door",もんがまえ,mongamae,,,"かまえ, もんがまえ","kamae, mongamae",⻔扇，两旁有门框
+264,8.0,⾩,hill,こざと,kozato,,,,,hill slopes gently upwards
+265,8.0,⾪,to capture,れいづくり,reizukuri,,,つくり,tsukuri,A hand grasping a rope.
+266,8.0,⾫,small bird,ふるとり,furutori,,,,,Small finch with a small head and long tail.
+267,8.0,⾬,rain,あめ,ame,,,,,"Raindrops falling downward, symbolizing water in showers."
+268,8.0,⻗,rain,あめかんむり,amekanmuri,,,かんむり,kanmuri,Raindrops falling down in drops.
+269,8.0,⾭,"blue, green",あお,ao,,,,,Blue-green color transition.
+270,8.0,⻘,"blue, green",あお,ao,,,,,A leafy tree branch with blue-green color.
+271,8.0,⾮,"wrong, non-",あらず,arazu,,,,,Non-existent or incorrect mark.
+272,8.0,⻟,"food, to eat",しょくへん,shokuhen,,,へん,hen,"The radical represents a mouth shape with two hands around it, suggesting consuming food."
+273,8.0,⻫,alike,せい,sei,,,,,A person's right hand.
+274,9.0,⾯,"face, surface",めん,men,,,,,A face shape divided into two halves.
+275,9.0,⾰,leather,つくりがわ,tsukurigawa,,,,,Leathery texture: curving lines resembling leather.
+276,9.0,,leather,なめしがわ,nameshigawa,,,,,Leathery texture with a jagged edge.
+277,9.0,⾲,leek,にら,nira,,,,,Leaf blade with a small stalk.
+278,9.0,⾳,"sound, noise",おと,oto,,,,,"Triangle shape, pointing upwards, often with a downward curve."
+279,9.0,⾴,"head, page",おおがい,oogai,,,つくり,tsukuri,"Head and spine aligned vertically, suggesting structure or organization."
+280,9.0,⾵,wind,かぜ,kaze,,,,,Wind blowing across a flat surface
+281,9.0,⾶,to fly,とぶ,tobu,,,,,⻩色三角形，代表⽓流运动
+282,9.0,⾷,"food, to eat",しょく,shoku,,,,,A spoon in a bowl.
+283,9.0,⾸,head,くび,kubi,,,,,A person's dominant facial feature.
+284,9.0,⾹,scent,かおり,kaori,,,,,A faint cloud of scent floating upwards.
+285,10.0,⾺,horse,うま,uma,,,,,⻋轮支撑，蹄子划过草地
+286,10.0,,horse,うまへん,umahen,,,へん,hen,Horse head with long neck and legs.
+287,10.0,⾻,bone,ほね,hone,,,,,Bone shape: rectangular outline with curved corners.
+288,10.0,,bone,ほねへん,honehen,,,へん,hen,骨の形: 無限の棒状。
+289,10.0,⾼,high,たかい,takai,,,,,⾼ (high): horizontal line topped by a single vertical stroke.
+290,10.0,⾽,long hair,かみかんむり,kamikanmuri,,,かんむり,kanmuri,Short cut → long tail dragging down
+291,10.0,⾾,fighting,たたかいがまえ,tatakaigamae,,,かまえ,kamae,⽚状物的尖端，形状类似拳头。
+292,10.0,⾿,herbs,においざけ,nioizake,,,,,⻋轮与杠杆结合，握笔之用。
+293,10.0,⿀,tripod,れき,reki,,,,,Tripod has three legs forming a tripod shape.
+294,10.0,⿁,demon,おに,oni,,,,,A shadowy figure with pointed ears and fangs.
+295,10.0,⾱,leather,なめしがわ,nameshigawa,,,,,Leathery texture; small holes and wrinkles.
+296,11.0,⿂,fish,うお,uo,,,,,Tail fin and head.
+297,11.0,,fish,うおへん,uohen,,,へん,hen,The radical  looks like a fish with fins spread wide. It connects to its meaning as representing water and aquatic creatures.
+298,11.0,⿃,bird,とり,tori,,,,,A bird flying through the sky
+299,11.0,⿄,salt,しお,shio,,,,,Claw shape with dots on top. Associated with cooking and food preservation.
+300,11.0,⿅,deer,しか,shika,,,,,鹿（むっ）→ four legs and large eyes
+301,11.0,⿆,wheat,むぎ,mugi,,,,,Wheat kernel shape
+302,11.0,⿇,hemp,あさ,asa,,,,,Hemp stalk with long fibers.
+303,11.0,,hemp,あさかんむり,asakanmuri,,,かんむり,kanmuri,Hemp stalk with twisted fibers
+304,11.0,⻩,yellow,き,ki,ki-yellow,,,,"Tranquil golden color, often seen in plants."
+305,11.0,黒,black,くろ,kuro,,,,,Black ink smear.
+306,11.0,⻲,turtle,かめ,kame,,,,,"Shell shape, head with curved neck."
+307,12.0,⿈,yellow,き,ki,,,,,Yellow dot surrounded by curved lines
+308,12.0,⿉,millet,きび,kibi,,,,,A grain of millet on a small stalk.
+309,12.0,⿊,black,くろ,kuro,,,,,Black dot within a square outline.
+310,12.0,⿋,embroider,ぬいとり,nuitori,,,,,Embroidered pattern forming a chain.
+311,12.0,⻭,tooth,は,ha,,,,,Tooth symbol: small rectangle with point at bottom.
+312,13.0,⿌,frog,かえる,kaeru,,,,,A large fish with a small head and long legs.
+313,13.0,⿍,tripod,かなえ,kanae,,,,,Triangular structure topped by a straight vertical line.
+314,13.0,⿎,drum,つづみ,tuzumi,,,,,A circular symbol with horizontal lines extending from two sides.
+315,13.0,⿏,"rat, mouse",ねずみ,nezumi,,,,,⿰ looks like a rat's head with whiskers and small eyes.
+316,14.0,⿐,nose,はな,hana,,,,,Nasal passage connecting mouth and nasal cavity.
+317,14.0,⿑,alike,せい,sei,,,,,resembles two similar lines intersecting
+318,15.0,⿒,tooth,は,ha,,,,,⻮ (teeth) → upper and lower jaw with visible teeth
+319,16.0,⿓,dragon,りゅう,ryuu,,,,,"竜 (Dragon): head and neck in left, body like a wave on right."
+320,16.0,⿔,turtle,かめ,kame,,,,,Turtle shell with a single tail.
+321,17.0,⿕,flute,やく,yaku,,,,,A long thin vertical line with a diagonal cross.
+322,,々,,,,,,,,Three strokes stacked vertically.
