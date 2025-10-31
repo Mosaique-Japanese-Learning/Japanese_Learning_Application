@@ -126,18 +126,15 @@ def load_notebook_generator() -> Optional[Callable[[str], str]]:
     cells = nb.get("cells", [])
     code_parts = []
     for idx, cell in enumerate(cells, start=1):
-        # Respect user's request: only use notebook up to Cell 11
         if idx > 11:
             break
         if cell.get("cell_type") != "code":
             continue
         src_list = cell.get("source", [])
-        # In some notebooks, source can be a single string
         if isinstance(src_list, str):
             src = src_list
         else:
             src = "".join(src_list)
-        # Skip direct execution calls that would run batches or prints
         if "run_batch_with_resume_v3(" in src and "def run_batch_with_resume_v3" not in src:
             continue
         if "print(generate_mnemonic(" in src:
@@ -145,7 +142,6 @@ def load_notebook_generator() -> Optional[Callable[[str], str]]:
         code_parts.append(src)
 
     code = "\n\n".join(code_parts)
-    # Execute in an isolated namespace
     ns: Dict[str, Any] = {}
     try:
         exec(code, ns)
@@ -156,7 +152,6 @@ def load_notebook_generator() -> Optional[Callable[[str], str]]:
     except Exception:
         return None
 
-# ---------- UI ----------
 st.set_page_config(page_title="Kanji Mnemonics", page_icon="🔎", layout="centered")
 st.title("Kanji Search with Mnemonics")
 
@@ -178,7 +173,6 @@ if query:
             st.warning("Kanji not found in the dataset.")
         else:
             meanings = info.get("meanings") or []
-            # Prefer merged_kanji.json keys, fallback to alternates; also normalize WK-prefixed '!'
             readings_on = (
                 info.get("readings_on")
                 or info.get("wk_readings_on")
@@ -193,28 +187,23 @@ if query:
                 or info.get("kun")
                 or []
             )
-            # Normalize readings to list[str]
             if isinstance(readings_on, str):
                 readings_on = [readings_on]
             if isinstance(readings_kun, str):
                 readings_kun = [readings_kun]
-            # Strip leading '!' (WK secondary reading marker)
             readings_on = [str(r).lstrip("!") for r in readings_on]
             readings_kun = [str(r).lstrip("!") for r in readings_kun]
 
             radicals = info.get("wk_radicals") or []
             stroke_file = info.get("stroke_svg")
-            # Compute JLPT (new) display string, replacing Grade with JLPT level
             jlpt_new_val = info.get("jlpt_new")
             jlpt_display: Optional[str] = None
             if jlpt_new_val is not None:
                 try:
                     jlpt_display = f"N{int(jlpt_new_val)}"
                 except Exception:
-                    # Already like "N5" or other string
                     jlpt_display = str(jlpt_new_val).upper()
             else:
-                # Fallbacks if jlpt_new missing
                 jlpt_fallback = info.get("jlpt") or info.get("jlpt_level") or info.get("jlpt_old")
                 if jlpt_fallback is not None:
                     try:
@@ -244,9 +233,7 @@ if query:
                 if not readings_on and not readings_kun:
                     st.write("—")
 
-            # Stroke order section
             st.markdown("### Stroke order")
-            # Controls to improve visibility
             c1, c2, c3 = st.columns([1,1,1])
             with c1:
                 hc = st.checkbox("High contrast", value=True, help="Force bright strokes for dark theme")
@@ -262,11 +249,9 @@ if query:
                     svg_content = _read_svg(svg_path)
                     if svg_content:
                         clean_svg = _sanitize_svg_for_embed(svg_content)
-                        # Apply visual tuning
                         stroke_col = "#ffffff" if hc else "#000000"
                         number_col = "#ffffff" if hc else "#808080"
                         tuned_svg = _inject_svg_style(clean_svg, stroke_color=stroke_col, number_color=number_col, stroke_width=sw, show_numbers=show_nums)
-                        # Ensure SVG scales to container width via wrapper too
                         svg_html = f"<div style=\"max-width: 420px;\">{tuned_svg}</div>"
             if svg_html:
                 st.markdown(svg_html, unsafe_allow_html=True)
@@ -295,7 +280,6 @@ if query:
                     st.warning("Could not generate via RAG; showing a simple fallback.")
                     st.write(fallback)
 
-            # Optional: show previously saved mnemonic for reference
             rec = mnemonic_idx.get(k)
             if rec and rec.get("mnemonic"):
                 with st.expander("Previously saved mnemonic (from JSONL)"):
