@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Mosaique — Sign in / Sign up (Sakura final)</title>
+<meta name="description" content="Mosaique — delightful Japanese learning: listening, speaking, reading and writing. AI feedback, SRS, and playful practice." />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<style>
+  /* =========================
+     THEME: Light Sakura (final tweak)
+     ========================= */
+  :root{
+    --bg: #fff1f9;             /* soft cream */
+    --panel: #ffffff;          /* card background */
+    --muted: #8b8fa3;          /* muted text */
+    --text: #102030;           /* main text */
+    --sakura-1: #ff6fa8;       /* bright sakura pink */
+    --sakura-2: #ff9ecb;       /* lighter pink */
+    --sakura-accent: #ff7bb1;
+    --accent: linear-gradient(90deg,var(--sakura-1),var(--sakura-2));
+    --glass: rgba(255,255,255,0.75);
+    --border: rgba(16,32,48,0.06);
+    --shadow: 0 12px 40px rgba(16,32,48,0.08);
+    --radius: 16px;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color:var(--text);
+    background:
+      radial-gradient(700px 420px at 8% 10%, rgba(255,110,160,0.06), transparent 8%),
+      radial-gradient(560px 380px at 92% 92%, rgba(255,160,200,0.03), transparent 8%),
+      var(--bg);
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    padding:36px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  /* Layout */
+  .wrap{ width:100%; max-width:1100px; display:grid; grid-template-columns:1fr; gap:28px }
+  @media(min-width:980px){ .wrap{ grid-template-columns:480px 1fr; align-items:stretch } }
+
+  .card{
+    background:var(--panel);
+    border-radius:var(--radius);
+    padding:26px;
+    border:1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+
+  /* PETALS: stronger so visible on light background */
+  .petal {
+    position:fixed;
+    width:44px; height:44px;            /* larger */
+    border-radius:60% 40% 60% 40%;
+    background:
+      radial-gradient(circle at 35% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.6) 10%, transparent 65%),
+      linear-gradient(180deg,var(--sakura-1),var(--sakura-2));
+    box-shadow: 0 18px 36px rgba(255,120,170,0.10), inset 0 -6px 18px rgba(255,255,255,0.08);
+    transform:rotate(12deg);
+    pointer-events:none;
+    mix-blend-mode: screen;
+    filter: blur(.1px);
+    opacity: 0.98;                       /* more visible */
+    z-index: 1;                          /* below cards (cards default z-index auto) */
+  }
+
+  /* logo image — keeps same size & rounded corners as the original "M" block */
+.logo-img{
+  width:56px;
+  height:56px;
+  border-radius:12px;
+  object-fit:cover;
+  display:block;
+  box-shadow:0 8px 26px rgba(0,0,0,0.06);
+}
+
+  @keyframes floatLight { from{transform: translateY(-30vh) rotate(0deg) scale(.92)} to{transform:translateY(120vh) rotate(420deg) scale(1.06)} }
+  .p1{ left:4%; animation: floatLight 18s linear infinite; animation-delay:-2s }
+  .p2{ left:22%; animation: floatLight 20s linear infinite; animation-delay:-6s; width:36px;height:36px }
+  .p3{ left:50%; animation: floatLight 22s linear infinite; animation-delay:-10s }
+  .p4{ left:78%; animation: floatLight 19s linear infinite; animation-delay:-4s; width:38px;height:38px }
+  .p5{ left:40%; top:6%; animation: floatLight 21s linear infinite; animation-delay:-8s }
+
+  /* Left hero (promo) */
+  .hero .brand{ display:flex; gap:12px; align-items:center }
+  .logo{ width:56px;height:56px;border-radius:12px;background:var(--accent);display:grid;place-items:center;font-weight:800;color:white;font-size:20px }
+  .brand h3{ margin:0; font-family:'Playfair Display', serif; font-size:18px }
+  .brand .muted{ color:var(--muted); font-size:13px }
+
+  h1{ font-size:26px; margin:8px 0 0 0 }
+  .tagline{ color:#334155; font-size:15px; line-height:1.45 }
+
+  .bullets{ margin-top:12px; display:flex; flex-direction:column; gap:10px }
+  .bullet{ display:flex; gap:12px; align-items:center; background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(245,245,250,0.98)); padding:10px; border-radius:12px; border:1px solid rgba(16,32,48,0.02) }
+  .bullet .ico{ width:44px;height:44px;border-radius:10px;background:linear-gradient(90deg,var(--sakura-1),var(--sakura-2));display:grid;place-items:center;color:white;font-weight:700 }
+
+  .cta-row{ display:flex; gap:12px; margin-top:18px }
+  .cta { padding:10px 14px; border-radius:12px; background:var(--accent); color:white; border:0; font-weight:700; cursor:pointer }
+  .cta.ghost{ padding:10px 14px; border-radius:12px; background:transparent; border:1px solid rgba(16,32,48,0.04); color:var(--text) }
+
+  .hero-illustration{ position:absolute; right:-40px; bottom:-20px; width:380px; opacity:0.95; transform:rotate(-6deg) scale(.98) }
+
+  .note { margin-top:16px; font-size:13px; color:var(--muted); background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.99)); padding:10px; border-radius:10px; border:1px solid rgba(16,32,48,0.02) }
+
+  /* Right form */
+  .form-head{ display:flex; justify-content:space-between; align-items:flex-start }
+  .form-head h2{ margin:0; font-size:20px }
+  .muted{ color:var(--muted) }
+
+  .tabs{ display:flex; gap:10px; margin-top:12px }
+  .tab{ padding:10px 14px; border-radius:12px; background:transparent; color:var(--muted); border:1px solid transparent; cursor:pointer; font-weight:700 }
+  .tab.active{ color:#0b1b2b; background:linear-gradient(180deg, rgba(255,110,160,0.06), rgba(255,155,200,0.03)); box-shadow: 0 8px 24px rgba(255,110,160,0.06); border:1px solid rgba(16,32,48,0.04) }
+
+  form{ display:flex; flex-direction:column; gap:12px; margin-top:8px }
+  label{ display:block; font-size:13px; margin-bottom:6px; color:#334155 }
+  .input-like{ display:flex; align-items:center; gap:12px; padding:12px; border-radius:12px; background:#fff; border:1px solid rgba(16,32,48,0.04) }
+  .input-like:focus-within{ box-shadow: 0 12px 30px rgba(255,110,160,0.06); border-color: rgba(255,110,160,0.14) }
+  input, select { background:transparent; border:0; outline:0; color:var(--text); font-size:15px; width:100% }
+  input::placeholder{ color:#9aa7bf }
+
+  .grid-2{ display:grid; gap:10px }
+  @media(min-width:640px){ .grid-2.two{ grid-template-columns:1fr 1fr } }
+
+  /* custom JLPT select */
+  .custom-select { position:relative; width:100%; display:flex; align-items:center; justify-content:space-between; padding:12px; border-radius:12px; background:#fff; border:1px solid rgba(16,32,48,0.04); cursor:pointer }
+  .select-list { position:absolute; left:0; right:0; top:calc(100% + 8px); z-index:40; background:#fff; border:1px solid rgba(16,32,48,0.06); border-radius:12px; padding:6px; box-shadow: 0 18px 40px rgba(16,32,48,0.06); max-height:220px; overflow:auto }
+  .select-item { padding:10px 12px; border-radius:10px; color:var(--text); cursor:pointer; font-size:14px }
+  .select-item:hover, .select-item[aria-selected="true"]{ background: linear-gradient(90deg, rgba(255,110,160,0.06), rgba(255,155,200,0.04)); color:var(--text) }
+
+  /* checkbox + CTA align */
+  .row-small { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:6px }
+  .chk{ display:flex; align-items:center; gap:10px; cursor:pointer; user-select:none; color:var(--muted) }
+  .box { width:18px; height:18px; border-radius:6px; border:1px solid rgba(255,110,160,0.28); display:grid; place-items:center; background:#fff; color:transparent; font-weight:800 }
+  .box.checked { background: linear-gradient(90deg,var(--sakura-1),var(--sakura-2)); color:white; border:0 }
+  .box.checked::after { content: '✔'; font-size:12px; color:white; line-height:1 }
+
+  .cta-row { display:flex; align-items:center; gap:14px; margin-top:12px; flex-wrap:wrap }
+  .btn { padding:12px 16px; border-radius:12px; background:var(--accent); color:white; border:0; font-weight:800; cursor:pointer }
+  .btn.small { padding:10px 12px; font-size:15px }
+  .ghost-btn { padding:10px 12px; border-radius:12px; background:transparent; border:1px solid rgba(16,32,48,0.04); color:var(--text); cursor:pointer }
+
+  /* FORGOT LINK - sakura color */
+  .link { color: var(--sakura-accent); text-decoration:underline; cursor:pointer; font-weight:600 }
+
+  .socials{ display:flex; gap:10px; margin-top:6px }
+  .status{ min-height:20px; font-size:13px; color:var(--muted) }
+
+  footer{ margin-top:14px; color:var(--muted); font-size:13px; text-align:center }
+
+  /* small effects */
+  .hidden { display:none }
+  .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0 }
+</style>
+</head>
+<body>
+  <!-- floating petals (more visible) -->
+  <div class="petal p1" aria-hidden="true"></div>
+  <div class="petal p2" aria-hidden="true"></div>
+  <div class="petal p3" aria-hidden="true"></div>
+  <div class="petal p4" aria-hidden="true"></div>
+  <div class="petal p5" aria-hidden="true"></div>
+
+  <main class="wrap" role="main" aria-labelledby="site-heading">
+    <!-- LEFT: Hero -->
+    <section class="card hero" aria-labelledby="promoTitle">
+      <div class="brand">
+        <img src="Screenshot 2025-10-30 150152.png" alt="Mosaique logo" class="logo-img" />
+        <div>
+          <h3>Mosaique</h3>
+          <div class="muted">AI-guided Japanese — practice, not grind</div>
+        </div>
+      </div>
+
+      <h1 id="promoTitle">Learn Japanese that lasts</h1>
+      <p class="tagline">Short daily lessons, real speaking practice, and adaptive reviews that remember you.</p>
+
+      <div class="bullets" aria-hidden="true">
+        <div class="bullet"><div class="ico">🎧</div><div><strong>Listen & speak</strong> — instant feedback</div></div>
+        <div class="bullet"><div class="ico">🧠</div><div><strong>Smart SRS</strong> — personalized review</div></div>
+        <div class="bullet"><div class="ico">漢</div><div><strong>Kanji & vocab</strong> — memorable lessons</div></div>
+        <div class="bullet"><div class="ico">🎮</div><div><strong>Playful streaks</strong> — keep the habit</div></div>
+      </div>
+
+      <div class="cta-row" style="margin-top:18px">
+        <button class="cta" id="getStarted">Get started — free</button>
+        <button class="cta ghost" id="learnMore">How it works</button>
+      </div>
+
+      <svg class="hero-illustration" viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#ff7bb1"/><stop offset="1" stop-color="#ff9ecb"/></linearGradient></defs>
+        <g transform="translate(70,20)">
+          <ellipse cx="280" cy="300" rx="150" ry="28" fill="rgba(16,32,48,0.06)"/>
+          <rect x="80" y="40" width="240" height="140" rx="16" fill="#fff" stroke="rgba(16,32,48,0.04)"/>
+          <rect x="96" y="60" width="206" height="104" rx="10" fill="url(#g)" opacity="0.08"/>
+          <g transform="translate(100,72)" fill="rgba(16,32,48,0.08)">
+            <rect x="6" y="6" width="80" height="8" rx="4"/>
+            <rect x="6" y="26" width="140" height="8" rx="4"/>
+            <circle cx="168" cy="34" r="16" fill="#ff7bb1"/>
+          </g>
+          <path d="M48 16c8 8 22 10 30 4" stroke="#ff9ecb" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <path d="M260 6c-6 6-20 10-28 6" stroke="#ff7bb1" stroke-width="3.6" stroke-linecap="round" fill="none"/>
+        </g>
+      </svg>
+
+      <div class="note">Pro tip: 5–10 minutes every day beats weekend marathons. Start small — stay consistent.</div>
+    </section>
+
+    <!-- RIGHT: Forms -->
+    <section class="card" aria-labelledby="auth-title">
+      <div class="form-head">
+        <div>
+          <div class="muted">Welcome</div>
+          <h2 id="auth-title">Sign in or create an account</h2>
+        </div>
+        <div class="tiny">Secure • Friendly • Fast</div>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Authentication tabs">
+        <button class="tab active" id="tab-login" role="tab" aria-selected="true" aria-controls="panel-login">Login</button>
+        <button class="tab" id="tab-signup" role="tab" aria-selected="false" aria-controls="panel-signup">Signup</button>
+      </div>
+
+      <!-- LOGIN -->
+      <div id="panel-login" role="tabpanel" aria-labelledby="tab-login">
+        <form id="loginForm" novalidate>
+          <label for="loginEmail">Email</label>
+          <div class="input-like">
+            <input id="loginEmail" name="email" type="email" placeholder="you@domain.com" required autocomplete="email" />
+          </div>
+
+          <label for="loginPassword">Password</label>
+          <div class="input-like" style="position:relative">
+            <input id="loginPassword" name="password" type="password" placeholder="Your password" required autocomplete="current-password" />
+            <button type="button" id="loginToggle" aria-label="Toggle password" style="background:none;border:0;color:var(--muted);cursor:pointer;font-weight:700">Show</button>
+          </div>
+
+          <div class="row-small" style="margin-top:8px">
+            <label class="chk" id="rememberLabel">
+              <div class="box" id="rememberBox" role="checkbox" aria-checked="false" tabindex="0"></div>
+              <span style="color:var(--muted)">Remember</span>
+            </label>
+
+            <a class="link" id="forgot" href="#">Forgot?</a>
+          </div>
+
+          <div class="cta-row">
+            <button class="btn small" id="loginBtn" type="submit"><span id="loginBtnText">Sign in</span></button>
+            <div class="status" id="loginMessage" aria-live="polite"></div>
+          </div>
+
+          <div style="text-align:center;color:var(--muted);margin-top:12px">or continue with</div>
+          <div class="socials" aria-hidden="true" style="margin-top:8px">
+            <button class="ghost-btn" style="flex:1">Google</button>
+            <button class="ghost-btn" style="flex:1">Apple</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- SIGNUP -->
+      <div id="panel-signup" role="tabpanel" aria-labelledby="tab-signup" hidden>
+        <form id="signupForm" novalidate>
+          <div class="grid-2 two">
+            <div>
+              <label for="signupName">Full name</label>
+              <div class="input-like">
+                <input id="signupName" name="username" type="text" placeholder="Your name" required autocomplete="name" />
+              </div>
+            </div>
+            <div>
+              <label for="signupEmail">Email</label>
+              <div class="input-like">
+                <input id="signupEmail" name="email" type="email" placeholder="you@domain.com" required autocomplete="email" />
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-2 two" style="margin-top:6px">
+            <div>
+              <label for="signupPassword">Password</label>
+              <div class="input-like" style="position:relative">
+                <input id="signupPassword" name="password" type="password" placeholder="At least 6 characters" required autocomplete="new-password" />
+                <button type="button" id="signupToggle" aria-label="Toggle password" style="background:none;border:0;color:var(--muted);cursor:pointer;font-weight:700">Show</button>
+              </div>
+            </div>
+            <div>
+              <label for="signupConfirm">Confirm</label>
+              <div class="input-like">
+                <input id="signupConfirm" name="confirm" type="password" placeholder="Repeat password" required autocomplete="new-password" />
+              </div>
+            </div>
+          </div>
+
+          <label for="jlpt" style="margin-top:6px">Level (optional)</label>
+          <div id="jlptWrapper" style="position:relative">
+            <div id="jlptTrigger" class="custom-select" role="button" aria-haspopup="listbox" aria-expanded="false" tabindex="0">
+              <span id="jlptLabel" class="label">N5</span>
+              <span class="chev">▾</span>
+            </div>
+
+            <!-- hidden native select for compatibility -->
+            <select id="jlptNative" class="sr-only" name="jlpt_level" aria-hidden="true">
+              <option value="N5">N5</option><option value="N4">N4</option><option value="N3">N3</option>
+              <option value="N2">N2</option><option value="N1">N1</option><option value="Other">Other</option>
+            </select>
+
+            <div id="jlptList" class="select-list" role="listbox" aria-labelledby="jlptTrigger" hidden>
+              <div class="select-item" role="option" data-value="N5" aria-selected="true">N5</div>
+              <div class="select-item" role="option" data-value="N4">N4</div>
+              <div class="select-item" role="option" data-value="N3">N3</div>
+              <div class="select-item" role="option" data-value="N2">N2</div>
+              <div class="select-item" role="option" data-value="N1">N1</div>
+              <div class="select-item" role="option" data-value="Other">Other</div>
+            </div>
+          </div>
+
+          <div style="margin-top:14px;display:flex;gap:10px;align-items:center">
+            <button class="btn" id="signupBtn" type="submit">Create account</button>
+            <div class="status" id="signupMessage" aria-live="polite"></div>
+          </div>
+
+          <div style="text-align:center;margin-top:10px;color:var(--muted);font-size:13px">
+            By creating an account you agree to our <span style="color:var(--sakura-2);text-decoration:underline;cursor:pointer">Terms</span> &amp; <span style="color:var(--sakura-2);text-decoration:underline;cursor:pointer">Privacy</span>.
+          </div>
+        </form>
+      </div>
+
+      <footer>
+        <div class="tiny">Frontend demo — set <code>API_BASE</code> in the script to match your Django backend.</div>
+      </footer>
+    </section>
+  </main>
+
+<script>
+/*
+  FINAL NOTES:
+  - Update API_BASE if your Django API runs elsewhere. Example: const API_BASE = 'http://localhost:8000'
+  - Endpoints expected:
+      POST ${API_BASE}/api/auth/signup  { username, email, password, confirm, jlpt_level }
+      POST ${API_BASE}/api/auth/login   { email, password } -> returns { access, refresh, user }
+  - For production, prefer HttpOnly cookies for tokens (this demo stores access in localStorage for simplicity).
+*/
+
+const API_BASE = ''; // <-- set to 'http://localhost:8000' if needed
+
+/* TAB SWITCHING */
+const tabLogin = document.getElementById('tab-login');
+const tabSignup = document.getElementById('tab-signup');
+const panelLogin = document.getElementById('panel-login');
+const panelSignup = document.getElementById('panel-signup');
+
+tabLogin.addEventListener('click', () => {
+  tabLogin.classList.add('active'); tabSignup.classList.remove('active');
+  panelLogin.hidden = false; panelSignup.hidden = true;
+  tabLogin.setAttribute('aria-selected','true'); tabSignup.setAttribute('aria-selected','false');
+});
+tabSignup.addEventListener('click', () => {
+  tabSignup.classList.add('active'); tabLogin.classList.remove('active');
+  panelSignup.hidden = false; panelLogin.hidden = true;
+  tabSignup.setAttribute('aria-selected','true'); tabLogin.setAttribute('aria-selected','false');
+});
+
+/* PASSWORD TOGGLES */
+function togglePassword(btnId, inputId){
+  const btn = document.getElementById(btnId), input = document.getElementById(inputId);
+  btn.addEventListener('click', () => {
+    const isPwd = input.type === 'password';
+    input.type = isPwd ? 'text' : 'password';
+    btn.textContent = isPwd ? 'Hide' : 'Show';
+  });
+}
+togglePassword('loginToggle','loginPassword');
+togglePassword('signupToggle','signupPassword');
+
+/* CUSTOM JLPT DROPDOWN */
+const jlptTrigger = document.getElementById('jlptTrigger');
+const jlptList = document.getElementById('jlptList');
+const jlptLabel = document.getElementById('jlptLabel');
+const jlptNative = document.getElementById('jlptNative');
+
+function openJlpt(open){
+  jlptList.hidden = !open;
+  jlptTrigger.setAttribute('aria-expanded', String(open));
+}
+jlptTrigger.addEventListener('click', (e) => { openJlpt(jlptList.hidden); });
+jlptTrigger.addEventListener('keydown', (e) => {
+  if(e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openJlpt(true); jlptList.querySelector('.select-item').focus(); }
+  if(e.key === 'Escape') openJlpt(false);
+});
+jlptList.querySelectorAll('.select-item').forEach(item => {
+  item.tabIndex = 0;
+  item.addEventListener('click', () => {
+    const v = item.dataset.value;
+    jlptLabel.textContent = v;
+    jlptNative.value = v;
+    jlptList.querySelectorAll('.select-item').forEach(si => si.setAttribute('aria-selected','false'));
+    item.setAttribute('aria-selected','true');
+    openJlpt(false);
+  });
+  item.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); item.click(); }
+    if(e.key === 'ArrowDown'){ e.preventDefault(); const next = item.nextElementSibling; if(next) next.focus(); }
+    if(e.key === 'ArrowUp'){ e.preventDefault(); const prev = item.previousElementSibling; if(prev) prev.focus(); }
+    if(e.key === 'Escape') openJlpt(false);
+  });
+});
+document.addEventListener('click', (e) => { if(!document.getElementById('jlptWrapper').contains(e.target)) openJlpt(false); });
+
+/* CUSTOM REMEMBER CHECKBOX */
+const rememberBox = document.getElementById('rememberBox');
+let rememberChecked = false;
+function setRemember(checked){
+  rememberChecked = checked;
+  rememberBox.setAttribute('aria-checked', String(checked));
+  if(checked) rememberBox.classList.add('checked'); else rememberBox.classList.remove('checked');
+}
+rememberBox.addEventListener('click', () => setRemember(!rememberChecked));
+rememberBox.addEventListener('keydown', (e) => { if(e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); setRemember(!rememberChecked); } });
+document.getElementById('rememberLabel').addEventListener('click', () => setRemember(!rememberChecked));
+
+/* HELPERS */
+function isEmail(s){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s) }
+function showMessage(el, msg, type='error'){
+  el.style.color = (type === 'success') ? '#16a34a' : '#ef4444';
+  el.textContent = msg;
+}
+function clearMessage(el){ el.textContent = ''; el.style.color = ''; }
+
+/* LOGIN FLOW */
+const loginForm = document.getElementById('loginForm');
+const loginBtn = document.getElementById('loginBtn');
+const loginMessage = document.getElementById('loginMessage');
+
+loginForm.addEventListener('submit', async (e) => {
+  e.preventDefault(); clearMessage(loginMessage);
+  const email = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPassword').value;
+
+  if(!email || !isEmail(email)){ showMessage(loginMessage, 'Enter a valid email'); return; }
+  if(!password){ showMessage(loginMessage, 'Enter your password'); return; }
+
+  loginBtn.disabled = true; loginBtn.textContent = 'Signing in...';
+  try{
+    const res = await fetch((API_BASE || '') + '/api/auth/login', {
+      method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ email, password })
+    });
+    const data = await res.json();
+    if(!res.ok){ const err = data.detail || data.message || JSON.stringify(data); showMessage(loginMessage, err || 'Login failed'); return; }
+    if(data.access){
+      localStorage.setItem('mosaique_access', data.access);
+      if(data.refresh) localStorage.setItem('mosaique_refresh', data.refresh);
+      if(data.user) localStorage.setItem('mosaique_user', JSON.stringify(data.user));
+      showMessage(loginMessage, 'Welcome back — redirecting...', 'success');
+      setTimeout(()=> window.location.href = '/dashboard', 800);
+    } else showMessage(loginMessage, 'Unexpected server response');
+  } catch(err){
+    showMessage(loginMessage, 'Network error: ' + err.message);
+  } finally {
+    loginBtn.disabled = false; loginBtn.textContent = 'Sign in';
+  }
+});
+
+/* SIGNUP FLOW */
+const signupForm = document.getElementById('signupForm');
+const signupBtn = document.getElementById('signupBtn');
+const signupMessage = document.getElementById('signupMessage');
+
+signupForm.addEventListener('submit', async (e) => {
+  e.preventDefault(); clearMessage(signupMessage);
+  const username = document.getElementById('signupName').value.trim();
+  const email = document.getElementById('signupEmail').value.trim();
+  const password = document.getElementById('signupPassword').value;
+  const confirm = document.getElementById('signupConfirm').value;
+  const jlpt = jlptNative.value;
+
+  if(!username || username.length < 2){ showMessage(signupMessage, 'Enter your name'); return; }
+  if(!email || !isEmail(email)){ showMessage(signupMessage, 'Enter a valid email'); return; }
+  if(!password || password.length < 6){ showMessage(signupMessage, 'Password must be at least 6 characters'); return; }
+  if(password !== confirm){ showMessage(signupMessage, 'Passwords do not match'); return; }
+
+  signupBtn.disabled = true; signupBtn.textContent = 'Creating...';
+  try{
+    const res = await fetch((API_BASE || '') + '/api/auth/signup', {
+      method:'POST', headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify({ username, email, password, confirm, jlpt_level: jlpt })
+    });
+    const data = await res.json();
+    if(!res.ok){
+      let err = data.detail || data.message || '';
+      if(!err && typeof data === 'object'){ const k = Object.keys(data)[0]; err = Array.isArray(data[k]) ? data[k][0] : String(data[k]); }
+      showMessage(signupMessage, err || 'Signup failed'); return;
+    }
+    showMessage(signupMessage, 'Account created — check your email for verification (if required).', 'success');
+    setTimeout(()=>{ tabLogin.click(); document.getElementById('loginEmail').value = email; }, 900);
+  } catch(err){
+    showMessage(signupMessage, 'Network error: ' + err.message);
+  } finally {
+    signupBtn.disabled = false; signupBtn.textContent = 'Create account';
+  }
+});
+
+/* Accessibility: nicer invalid messages */
+document.addEventListener('invalid', function(e){
+  e.preventDefault();
+  const field = e.target;
+  const panel = field.closest('form').querySelector('[aria-live]');
+  if(panel) showMessage(panel, field.validationMessage || 'Please fill this field');
+  field.focus();
+}, true);
+
+/* Micro UX: hero CTAs */
+document.getElementById('getStarted').addEventListener('click', () => { tabSignup.click(); document.getElementById('signupName').focus(); });
+document.getElementById('learnMore').addEventListener('click', () => { alert('Mosaique blends AI feedback, SRS, and short practice sessions — perfect for busy learners.'); });
+</script>
+</body>
+</html>

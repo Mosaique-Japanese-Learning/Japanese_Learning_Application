@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Mosaique — Interactive Report (Print Ready)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root{--bg:#fff7fb;--card:#fff;--muted:#6b7280;--text:#0b1220;--accent:#7c5cff;--rose:#ff6fa8;--radius:12px;--shadow:0 18px 40px rgba(20,20,30,0.06)}
+*{box-sizing:border-box}html,body{height:100%}body{margin:0;font-family:Inter,system-ui,Arial;color:var(--text);background:linear-gradient(180deg,var(--bg),#fff);-webkit-font-smoothing:antialiased;overflow:hidden}
+.container{height:100vh;display:grid;grid-template-columns:320px 1fr;padding:20px;gap:20px;max-width:1400px;margin:0 auto;align-items:start}
+@media(max-width:980px){.container{grid-template-columns:1fr;padding:12px}}
+.panel{background:var(--card);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);border:1px solid rgba(12,12,20,0.03);overflow:auto}
+.left{min-height:calc(100vh - 40px)}
+.right{min-height:calc(100vh - 40px);display:flex;flex-direction:column;gap:14px;overflow:auto}
+.header{display:flex;gap:12px;align-items:center}
+.avatar{width:64px;height:64px;border-radius:12px;background:linear-gradient(180deg,#fff,#fff);display:grid;place-items:center;color:var(--accent);font-weight:800}
+.title{font-weight:800;font-size:16px}
+.meta{color:var(--muted);font-size:13px}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.kpi{padding:10px;border-radius:10px;background:linear-gradient(180deg,#fff,#fff);text-align:center;border:1px solid rgba(12,12,20,0.03)}
+.kpi .v{font-weight:800;color:var(--accent)}
+.controls{display:flex;gap:8px;align-items:center;margin-top:10px}
+.select, .btn, .toggle{padding:8px 10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);background:#fff;cursor:pointer}
+.btn.primary{background:linear-gradient(90deg,var(--rose),#ff9ecb);color:#fff;border:0}
+.petal-bg{position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(circle at 10% 10%, rgba(255,230,240,0.5), transparent 12%)}
+.top-grid{display:grid;grid-template-columns:1fr 280px;gap:14px;align-items:start}
+.card{border-radius:12px;background:var(--card);padding:14px;box-shadow:var(--shadow);border:1px solid rgba(12,12,20,0.03);display:flex;flex-direction:column}
+.canvas{flex:1;min-height:200px}
+.stat-row{display:flex;gap:12px;justify-content:space-between;margin-top:10px}
+.small{font-size:13px;color:var(--muted)}
+.bottom-card{padding:12px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.tight{padding:8px}
+@media(max-width:720px){.container{grid-template-columns:1fr}.left{display:none}}
+
+/* PRINT STYLES for A4 PDF generation */
+@media print{
+  @page { size: A4; margin: 20mm }
+  body * { visibility: hidden }
+  .print-area, .print-area * { visibility: visible }
+  .print-area { position: absolute; left: 0; top: 0; width: 100%; }
+  .no-print{display:none}
+}
+
+/* small helper for print page layout */
+.print-cover{display:flex;flex-direction:column;justify-content:center;align-items:center;height:100vh;background:linear-gradient(180deg,#fff8fb,#fff);}
+.print-cover h1{font-size:28px;margin:10px 0}
+.print-cover p{color:var(--muted)}
+
+</style>
+</head>
+<body>
+<div class="petal-bg" aria-hidden="true"></div>
+<div class="container">
+  <aside class="panel left">
+    <div class="header">
+      <div class="avatar">A</div>
+      <div>
+        <div class="title" id="userName">Aizen Sosuke</div>
+        <div class="meta" id="userMeta">JLPT N4 • Tokyo</div>
+      </div>
+    </div>
+
+    <div class="kpis" style="margin-top:12px">
+      <div class="kpi"><div class="v" id="kpi-xp">1711</div><div class="small">XP</div></div>
+      <div class="kpi"><div class="v" id="kpi-streak">12d</div><div class="small">Streak</div></div>
+    </div>
+
+    <div style="margin-top:14px"><strong>Report options</strong>
+      <div class="controls">
+        <select id="range" class="select">
+          <option value="30">Last 30 days</option>
+          <option value="14">Last 14 days</option>
+          <option value="7">Last 7 days</option>
+        </select>
+        <button id="compactToggle" class="toggle">Compact</button>
+      </div>
+    </div>
+
+    <div style="margin-top:14px"><strong>Filters</strong>
+      <div class="controls">
+        <button class="btn" id="btn-highlight">Highlight max day</button>
+        <button class="btn" id="btn-anim" data-active="1">Toggle Anim</button>
+      </div>
+    </div>
+
+    <div style="margin-top:16px"><strong>Export & Print</strong>
+      <div class="controls">
+        <button id="btn-export" class="btn primary">Export CSV</button>
+        <button id="btn-print" class="btn">Print</button>
+        <button id="btn-pdf" class="btn">Export A4 PDF</button>
+      </div>
+    </div>
+
+    <div style="margin-top:18px"><small class="small">This view uses static demo data and includes a print-ready A4 export with cover and summary.</small></div>
+  </aside>
+
+  <main class="right">
+    <div class="top-grid">
+      <section class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div><strong id="chartTitle">Progress (30 days)</strong><div class="small">Interactive report</div></div>
+          <div class="small">Hover points to see values</div>
+        </div>
+        <div class="canvas"><canvas id="lineChart"></canvas></div>
+        <div class="stat-row"><div class="small">+72 XP this week</div><div class="small">+4 Lessons</div><div class="small">64% to N3</div></div>
+      </section>
+
+      <aside class="card" id="rightCard">
+        <div style="display:flex;justify-content:space-between;align-items:center"><div><strong>Level</strong><div class="small">Snapshot</div></div></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:8px">
+          <canvas id="donutChart" width="160" height="160"></canvas>
+          <div id="donutCenter" style="position:relative;margin-top:6px;font-weight:800">64%</div>
+          <div class="small">N4 → N3</div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center"><div><strong>Weekly minutes</strong><div class="small">Quick glance</div></div>
+        <div class="controls"><button id="btn-toggle-bars" class="toggle">Toggle Colors</button></div>
+      </div>
+      <div class="canvas" style="min-height:160px"><canvas id="barChart"></canvas></div>
+    </div>
+
+    <div class="card bottom-card tight" id="insights">
+      <div style="display:flex;gap:10px;align-items:center"><strong>Top insight:</strong><div id="insightText" class="small">Total XP: calculating...</div></div>
+      <div style="display:flex;gap:8px"><button id="btn-suggest" class="btn">Suggest improvements</button><button id="btn-reset" class="btn">Reset</button></div>
+    </div>
+  </main>
+</div>
+
+<script>
+/* ---------- STATIC DATA ---------- */
+const staticData = {
+  labels30: ['1 Oct','2 Oct','3 Oct','4 Oct','5 Oct','6 Oct','7 Oct','8 Oct','9 Oct','10 Oct','11 Oct','12 Oct','13 Oct','14 Oct','15 Oct','16 Oct','17 Oct','18 Oct','19 Oct','20 Oct','21 Oct','22 Oct','23 Oct','24 Oct','25 Oct','26 Oct','27 Oct','28 Oct','29 Oct','30 Oct'],
+  xp30: [22,60,45,85,30,77,25,95,30,82,42,71,56,34,61,29,78,34,68,79,34,54,72,82,12,91,40,73,88,62],
+  weekLabels:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+  weekMinutes:[30,45,25,60,20,70,10],
+  donut:64
+};
+
+function sum(a){return a.reduce((s,v)=>s+v,0);}
+
+// small helper to show fallback text inside a card if chart fails
+function showFallback(cardSelector, message){
+  try{
+    const c = document.querySelector(cardSelector);
+    if(!c) return;
+    // remove canvas if present
+    const canvas = c.querySelector('canvas');
+    if(canvas) canvas.style.display = 'none';
+    let el = c.querySelector('.fallback-msg');
+    if(!el){ el = document.createElement('div'); el.className='fallback-msg'; el.style.padding='18px'; el.style.color='#666'; el.style.textAlign='center'; c.appendChild(el); }
+    el.textContent = message;
+  }catch(e){ console.error('fallback error', e); }
+}
+
+/* ---------- Chart creation (deferred until load) ---------- */
+let lineChart, donutChart, barChart;
+const base = { responsive:true, maintainAspectRatio:false, plugins:{ legend:{ display:false } }, animation:{ duration:700 } };
+
+// create charts inside try/catch
+function createCharts(){
+  try{
+    // ensure canvas containers have minimum heights (helps ChartJS layout)
+    document.querySelectorAll('.canvas').forEach(el=>{
+      if(getComputedStyle(el).minHeight === '0px'){
+        el.style.minHeight = '220px';
+      }
+    });
+
+    // LINE
+    const lineEl = document.getElementById('lineChart');
+    if(!lineEl) throw new Error('lineChart canvas not found');
+    const lineCtx = lineEl.getContext('2d');
+    lineChart = new Chart(lineCtx, {
+      type:'line',
+      data:{
+        labels: staticData.labels30,
+        datasets:[{
+          data: staticData.xp30,
+          borderColor:'#7c5cff',
+          backgroundColor: (ctx)=>{ const g = ctx.chart.ctx.createLinearGradient(0,0,0,300); g.addColorStop(0,'rgba(124,92,255,0.14)'); g.addColorStop(1,'rgba(255,255,255,0)'); return g; },
+          tension:0.36,
+          pointRadius:4, pointHoverRadius:6, fill:true, borderWidth:3
+        }]
+      },
+      options:{
+        ...base,
+        scales:{ x:{ grid:{display:false}, ticks:{ maxTicksLimit:8 } }, y:{ grid:{color:'rgba(0,0,0,0.04)'}, beginAtZero:true } },
+        interaction:{ mode:'index', intersect:false },
+        plugins:{ tooltip:{ callbacks:{ label(ctx){ return 'XP: '+ctx.parsed.y } } } }
+      }
+    });
+
+  }catch(err){
+    console.error('Line chart error:', err);
+    showFallback('.card .canvas', 'Unable to render progress chart — check console.');
+  }
+
+  try{
+    // DONUT
+    const donutEl = document.getElementById('donutChart');
+    if(!donutEl) throw new Error('donutChart canvas not found');
+    const donutCtx = donutEl.getContext('2d');
+    donutChart = new Chart(donutCtx, {
+      type:'doughnut',
+      data:{ labels:['done','rem'], datasets:[{ data:[staticData.donut,100-staticData.donut], backgroundColor:['#7c5cff','rgba(0,0,0,0.06)'], borderWidth:0 }]},
+      options:{ cutout:'72%', plugins:{ legend:{ display:false }, tooltip:{ enabled:false } }, animation:{ animateRotate:true, duration:900 } }
+    });
+    // animate numeric center (safe)
+    (function animateDonutCenter(to){
+      const el=document.getElementById('donutCenter'); if(!el) return;
+      const from=parseInt(el.textContent)||0; const start=performance.now(); const dur=700;
+      requestAnimationFrame(function tick(ts){
+        const t=Math.min(1,(ts-start)/dur);
+        const v=Math.round(from+(to-from)*t); el.textContent = v+'%';
+        if(t<1) requestAnimationFrame(tick);
+      });
+    })(staticData.donut);
+
+  }catch(err){
+    console.error('Donut chart error:', err);
+    showFallback('#rightCard', 'Unable to render level donut — check console.');
+  }
+
+  try{
+    // BAR
+    const barEl = document.getElementById('barChart');
+    if(!barEl) throw new Error('barChart canvas not found');
+    const barCtx = barEl.getContext('2d');
+    const defaultColors=['#ff9ecb','#ff7bb1','#ffd166','#7c5cff','#00d4ff','#ff7bb1','#ffd166'];
+    barChart = new Chart(barCtx, {
+      type:'bar',
+      data:{ labels: staticData.weekLabels, datasets:[{ data: staticData.weekMinutes, backgroundColor: defaultColors, borderRadius:8, barThickness:20 }]},
+      options:{ ...base, scales:{ x:{ grid:{display:false} }, y:{ beginAtZero:true, ticks:{ stepSize:10 } } } }
+    });
+
+  }catch(err){
+    console.error('Bar chart error:', err);
+    showFallback('.card .canvas', 'Unable to render bar chart — check console.');
+  }
+
+  // after creating, do one final resize to ensure proper rendering
+  setTimeout(()=>{ try{ lineChart && lineChart.resize(); donutChart && donutChart.resize(); barChart && barChart.resize(); } catch(e){ console.warn('resize after create failed', e); } }, 250);
+}
+
+// safe init: wait for full load (ensures fonts/styles applied and layout stabilized)
+window.addEventListener('load', ()=>{
+  try{
+    createCharts();
+
+    // wire a tiny retry in case layout wasn't ready (rare browsers)
+    setTimeout(()=>{ try{ lineChart && lineChart.resize(); donutChart && donutChart.resize(); barChart && barChart.resize(); }catch(e){console.warn(e)} }, 600);
+
+    // attach resize handler
+    let rt; window.addEventListener('resize', ()=>{ clearTimeout(rt); rt = setTimeout(()=>{ try{ lineChart && lineChart.resize(); donutChart && donutChart.resize(); barChart && barChart.resize(); }catch(e){} }, 180); });
+
+  }catch(e){
+    console.error('chart init failed', e);
+  }
+});
+
+/* ---------- preserved interactivity (compact toggle, export, highlight, etc) ---------- */
+// compact toggle
+const rootEl = document.getElementById('root');
+document.getElementById('compactToggle')?.addEventListener('click', function(){
+  rootEl.classList.toggle('compact');
+  this.classList.toggle('active');
+  setTimeout(()=>{ try{ if(lineChart) lineChart.resize(); if(barChart) barChart.resize(); if(donutChart) donutChart.resize(); }catch(e){} }, 220);
+});
+
+// range selector
+document.getElementById('range')?.addEventListener('change', function(e){
+  const v = Number(e.target.value);
+  if(!lineChart) return;
+  lineChart.data.labels = staticData.labels30.slice(-v);
+  lineChart.data.datasets[0].data = staticData.xp30.slice(-v);
+  document.getElementById('chartTitle').textContent = `Progress (${v} days)`;
+  lineChart.update();
+  document.getElementById('insightText').textContent = 'Showing last '+v+' days.';
+});
+
+// highlight max day
+let highlighted=false;
+document.getElementById('btn-highlight')?.addEventListener('click', function(){
+  if(!lineChart) return;
+  if(!highlighted){
+    const max = Math.max(...lineChart.data.datasets[0].data);
+    const idx = lineChart.data.datasets[0].data.indexOf(max);
+    lineChart.data.datasets[0].pointBackgroundColor = lineChart.data.datasets[0].data.map((_,i)=> i===idx? '#ff6fa8':'#fff');
+    lineChart.update();
+    document.getElementById('insightText').textContent = 'Max day: '+lineChart.data.labels[idx]+' ('+max+' XP)';
+    this.textContent='Unhighlight'; highlighted=true;
+  } else {
+    lineChart.data.datasets[0].pointBackgroundColor = undefined;
+    lineChart.update();
+    document.getElementById('insightText').textContent = 'Highlights cleared.';
+    this.textContent='Highlight max day'; highlighted=false;
+  }
+});
+
+// toggle animations
+let animEnabled=true;
+document.getElementById('btn-anim')?.addEventListener('click', function(){
+  animEnabled = !animEnabled;
+  this.dataset.active = animEnabled ? '1' : '0';
+  this.classList.toggle('active');
+  if(lineChart) lineChart.options.animation.duration = animEnabled?700:0;
+  if(barChart) barChart.options.animation.duration = animEnabled?700:0;
+  if(donutChart) donutChart.options.animation.duration = animEnabled?700:0;
+  try{ lineChart && lineChart.update(); barChart && barChart.update(); donutChart && donutChart.update(); }catch(e){}
+});
+
+// toggle bar colors
+let useAlt=false;
+document.getElementById('btn-toggle-bars')?.addEventListener('click', function(){
+  useAlt = !useAlt;
+  if(!barChart) return;
+  const colors = useAlt ? ['#b3a2ff','#ffb3d1','#ffd98f','#9be0ff','#c7b3ff','#ffc1e6','#ffe3a8'] : ['#ff9ecb','#ff7bb1','#ffd166','#7c5cff','#00d4ff','#ff7bb1','#ffd166'];
+  barChart.data.datasets[0].backgroundColor = colors;
+  barChart.update();
+});
+
+// export CSV
+document.getElementById('btn-export')?.addEventListener('click', function(){
+  if(!lineChart) return;
+  const rows = [['date','xp'], ...lineChart.data.labels.map((l,i)=>[l, lineChart.data.datasets[0].data[i]]), ['weekly_total', sum(staticData.weekMinutes)]];
+  const csv = rows.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob([csv], { type:'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = 'mosaique_report.csv'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+});
+
+// print
+document.getElementById('btn-print')?.addEventListener('click', ()=>{ window.print(); });
+
+// suggestion
+document.getElementById('btn-suggest')?.addEventListener('click', ()=> {
+  const avg = Math.round(sum(staticData.xp30)/staticData.xp30.length);
+  const totalWeek = sum(staticData.weekMinutes);
+  const msg = `Average daily XP: ${avg}. Weekly minutes total: ${totalWeek}. Suggest: increase weekday practice by 10% to stabilize XP.`;
+  document.getElementById('insightText').textContent = msg;
+});
+
+// reset
+document.getElementById('btn-reset')?.addEventListener('click', ()=> {
+  if(!lineChart) return;
+  lineChart.data.labels = staticData.labels30; lineChart.data.datasets[0].data = staticData.xp30; lineChart.update();
+  barChart.data.datasets[0].data = staticData.weekMinutes; barChart.update();
+  // animate donut center if available
+  try{ document.getElementById('donutCenter').textContent = staticData.donut + '%'; }catch(e){}
+  document.getElementById('insightText').textContent = 'Reset to static demo data.';
+});
+</script>
+</body>
+</html>
